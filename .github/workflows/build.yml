@@ -27,6 +27,30 @@ jobs:
         spring-boot-version: [ 3.0.13 ]
         experimental: [ false ]
         include:
+          - java: 11
+            spring-boot-version: 2.7.18
+            spring-boot-display-version: 2.7.x
+            experimental: false
+          - java: 11
+            spring-boot-version: 2.6.14
+            spring-boot-display-version: 2.6.x
+            experimental: false
+          - java: 11
+            spring-boot-version: 2.5.7
+            spring-boot-display-version: 2.5.x
+            experimental: false
+          - java: 13
+            spring-boot-version: 2.7.18
+            spring-boot-display-version: 2.7.x
+            experimental: false
+          - java: 13
+            spring-boot-version: 2.6.14
+            spring-boot-display-version: 2.6.x
+            experimental: false
+          - java: 13
+            spring-boot-version: 2.5.7
+            spring-boot-display-version: 2.5.x
+            experimental: false
           - java: 17
             spring-boot-version: 2.7.18
             spring-boot-display-version: 2.7.x
@@ -117,7 +141,7 @@ jobs:
     - name: Clean up files
       run: ./mvnw clean -B
     - name: Build sdk
-      run: ./mvnw compile -B -q
+      run: ./mvnw compile -B -q -Djava.version=${{ matrix.java }} -Dspringboot.version=${{ matrix.spring-boot-version }}
     - name: Unit tests
       run: ./mvnw test # making it temporarily verbose.
     - name: Codecov
