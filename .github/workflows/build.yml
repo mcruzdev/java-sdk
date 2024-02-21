@@ -3,7 +3,6 @@ name: Build
 on:
   push:
     branches:
-      - issue-990
       - master
       - release-*
     tags:
@@ -11,6 +10,7 @@ on:
 
   pull_request:
     branches:
+    - issue-990
     - master
     - release-*
 
@@ -23,10 +23,34 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        java: [ 11, 13, 17 ]
+        java: [ 17 ]
         spring-boot-version: [ 3.0.13 ]
         experimental: [ false ]
         include:
+          - java: 11
+            spring-boot-version: 2.7.18
+            spring-boot-display-version: 2.7.x
+            experimental: false
+          - java: 11
+            spring-boot-version: 2.6.14
+            spring-boot-display-version: 2.6.x
+            experimental: false
+          - java: 11
+            spring-boot-version: 2.5.7
+            spring-boot-display-version: 2.5.7
+            experimental: false
+          - java: 13
+            spring-boot-version: 2.7.18
+            spring-boot-display-version: 2.7.x
+            experimental: false
+          - java: 13
+            spring-boot-version: 2.6.14
+            spring-boot-display-version: 2.6.x
+            experimental: false
+          - java: 13
+            spring-boot-version: 2.5.7
+            spring-boot-display-version: 2.5.7
+            experimental: false
           - java: 17
             spring-boot-version: 2.7.18
             spring-boot-display-version: 2.7.x
