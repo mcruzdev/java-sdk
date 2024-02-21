@@ -31,38 +31,47 @@ jobs:
             spring-boot-version: 2.7.18
             spring-boot-display-version: 2.7.x
             experimental: false
+            run-examples: false
           - java: 11
             spring-boot-version: 2.6.14
             spring-boot-display-version: 2.6.x
             experimental: false
+            run-examples: false
           - java: 11
             spring-boot-version: 2.5.7
             spring-boot-display-version: 2.5.x
             experimental: false
+            run-examples: false
           - java: 13
             spring-boot-version: 2.7.18
             spring-boot-display-version: 2.7.x
             experimental: false
+            run-examples: false
           - java: 13
             spring-boot-version: 2.6.14
             spring-boot-display-version: 2.6.x
             experimental: false
+            run-examples: false
           - java: 13
             spring-boot-version: 2.5.7
             spring-boot-display-version: 2.5.x
             experimental: false
+            run-examples: false
           - java: 17
             spring-boot-version: 2.7.18
             spring-boot-display-version: 2.7.x
             experimental: false
+            run-examples: true
           - java: 17
             spring-boot-version: 2.6.14
             spring-boot-display-version: 2.6.x
             experimental: false
+            run-examples: true
           - java: 17
             spring-boot-version: 2.5.7
             spring-boot-display-version: 2.5.x
             experimental: false
+            run-examples: true
     env:
       GOVER: "1.20"
       GOOS: linux
@@ -141,7 +150,7 @@ jobs:
     - name: Clean up files
       run: ./mvnw clean -B
     - name: Build sdk
-      run: ./mvnw compile -B -q -Djava.version=${{ matrix.java }} -Dspringboot.version=${{ matrix.spring-boot-version }}
+      run: ./mvnw compile -B -q -Djava.version=${{ matrix.java }} -Dspringboot.version=${{ matrix.spring-boot-version }} !examples
     - name: Unit tests
       run: ./mvnw test # making it temporarily verbose.
     - name: Codecov
