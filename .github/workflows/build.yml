@@ -3,6 +3,7 @@ name: Build
 on:
   push:
     branches:
+      - issue-990
       - master
       - release-*
     tags:
@@ -10,7 +11,6 @@ on:
 
   pull_request:
     branches:
-    - issue-990
     - master
     - release-*
 
