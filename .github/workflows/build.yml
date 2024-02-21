@@ -3,6 +3,7 @@ name: Build
 on:
   push:
     branches:
+      - issue-990
       - master
       - release-*
     tags:
@@ -22,7 +23,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        java: [ 17 ]
+        java: [ 11, 13, 17 ]
         spring-boot-version: [ 3.0.13 ]
         experimental: [ false ]
         include:
