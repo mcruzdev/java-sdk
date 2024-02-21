@@ -150,13 +150,15 @@ jobs:
     - name: Clean up files
       run: ./mvnw clean -B
     - name: Build sdk
-      run: ./mvnw compile -B -q -Djava.version=${{ matrix.java }} -Dspringboot.version=${{ matrix.spring-boot-version }} -pl \!examples
+      if: ${{ matrix.run-examples }}
+      run: ./mvnw compile -B -q
     - name: Unit tests
+      if: ${{ matrix.run-examples }}
       run: ./mvnw test # making it temporarily verbose.
     - name: Codecov
       uses: codecov/codecov-action@v4.0.1
     - name: Install jars
-      run: ./mvnw install -q -B -DskipTests
+      run: ./mvnw install -q -B -DskipTests -pl \!examples
     - name: Integration tests using spring boot version ${{ matrix.spring-boot-version }}
       id: integration_tests
       run: PRODUCT_SPRING_BOOT_VERSION=${{ matrix.spring-boot-version }} ./mvnw -B -f sdk-tests/pom.xml verify
