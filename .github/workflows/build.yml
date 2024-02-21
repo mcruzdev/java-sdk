@@ -150,7 +150,7 @@ jobs:
     - name: Clean up files
       run: ./mvnw clean -B
     - name: Build sdk
-      run: ./mvnw compile -B -q -Djava.version=${{ matrix.java }} -Dspringboot.version=${{ matrix.spring-boot-version }} !examples
+      run: ./mvnw compile -B -q -Djava.version=${{ matrix.java }} -Dspringboot.version=${{ matrix.spring-boot-version }} -pl \!examples
     - name: Unit tests
       run: ./mvnw test # making it temporarily verbose.
     - name: Codecov
