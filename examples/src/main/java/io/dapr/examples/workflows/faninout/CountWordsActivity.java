@@ -30,7 +30,8 @@ public class CountWordsActivity implements WorkflowActivity {
     StringTokenizer tokenizer = new StringTokenizer(input);
     int result = tokenizer.countTokens();
 
-    logger.info("Activity returned: {}", result);
+    logger.info("Activity returned: {}.", result);
+    
     logger.info("Activity finished");
 
     return result;
